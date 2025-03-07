@@ -32,41 +32,41 @@ const Signup = () => {
   return (
     <div style={styles.container}>
       <h2>Sign Up</h2>
-      <form onSubmit={handleSubmit} style={styles.form}>
-        <div style={styles.inputGroup}>
-          <label>Username:</label>
-          <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-            style={styles.input}
-          />
-        </div>
-        <div style={styles.inputGroup}>
-          <label>Enter Email:</label>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-            style={styles.input}
-          />
-        </div>
-        <div style={styles.inputGroup}>
-          <label>Entr Password:</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-            style={styles.input}
-          />
-        </div>
-        <button type="submit" style={styles.button}>Sign Up</button>
-      </form>
-      {message && <p>{message}</p>}
+  <form onSubmit={handleSubmit} style={styles.form}>
+    <div style={styles.inputGroup}>
+      <label>Username:</label>
+      <input
+        type="text"
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+        required
+        style={styles.input}
+      />
     </div>
+    <div style={styles.inputGroup}>
+      <label>Email: put</label>
+      <input
+        type="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        required
+        style={styles.input}
+      />
+    </div>
+    <div style={styles.inputGroup}>
+      <label>Password:</label>
+      <input
+        type="password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        required
+        style={styles.input}
+      />
+    </div>
+    <button type="submit" style={styles.button}>Sign Up</button>
+  </form>
+  {message && <p>{message}</p>}
+</div>
   );
 };
 
