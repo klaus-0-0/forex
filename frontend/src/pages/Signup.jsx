@@ -44,7 +44,7 @@ const Signup = () => {
       />
     </div>
     <div style={styles.inputGroup}>
-      <label>Email: put</label>
+      <label>Email:</label>
       <input
         type="email"
         value={email}
