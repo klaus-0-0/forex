@@ -17,7 +17,7 @@ app.use(express.json());
 // **Enable CORS (Cross-Origin Resource Sharing)**
 app.use(
   cors({
-    origin: ["https://forex-pmae.onrender.com"], // Allow frontend URL
+    origin: ["https://forex-frontend-ozhi.onrender.com"], // Allow frontend URL
     credentials: true, // Allow cookies to be sent
   })
 );
@@ -40,7 +40,7 @@ passport.use(
     {
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: "https://forex-pmae.onrender.com/auth/google/callback",
+      callbackURL: "https://forex-frontend-ozhi.onrender.com/auth/google/callback",
     },
     async (accessToken, refreshToken, profile, done) => {
       try {
@@ -85,7 +85,7 @@ app.post("/auth/google", async (req, res) => {
     const { data } = await axios.post("https://oauth2.googleapis.com/token", {
       client_id: process.env.GOOGLE_CLIENT_ID,
       client_secret: process.env.GOOGLE_CLIENT_SECRET,
-      redirect_uri: "https://forex-pmae.onrender.com", // Must match redirect URI from frontend
+      redirect_uri: "https://forex-frontend-ozhi.onrender.com", // Must match redirect URI from frontend
       grant_type: "authorization_code",
       code, 
     });
