@@ -10,6 +10,12 @@ const Login = () => {
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
+
+    const Info = JSON.parse(localStorage.getItem("user-info"));
+    if(Info){
+      navigate('/data')
+    }
+    
     e.preventDefault();
     try {
       const response = await fetch(`${config.apiUrl}/api/login`, {
