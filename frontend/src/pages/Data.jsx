@@ -6,6 +6,10 @@ const indicators = [
   "CPI", "PPI", "GDP", "Unemployment", "Employment",
   "Bank Rates", "Services", "Manufacturing", "Retail Sales"
 ];
+const indicators2 = [
+  "OIL", "GAS", "Export", "Import", "COT",
+  "core-PCE", "Core-retail", "Inflation", "NFP"
+];
 
 const countries = ["USA", "CHINA", "GERMANY", "INDIA", "RUSSIA", "EUROPE", "UK"];
 
@@ -18,17 +22,17 @@ const Data = ({ economicData }) => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    // ✅ Check if user is logged in
+    //  Check if user is logged in
     const userInfo = JSON.parse(localStorage.getItem("user-info"));
 
     if (!userInfo) {
-      navigate("/login"); // 🚀 Redirect to login if no user
+      navigate("/login"); //  Redirect to login if no user
     } else {
       setUser(userInfo);
     }
   }, [navigate]);
 
-  // ✅ Handle Sign-Out
+  //  Handle Sign-Out
   const handleSignOut = () => {
     localStorage.removeItem("user-info");
     navigate("/login");
@@ -36,7 +40,7 @@ const Data = ({ economicData }) => {
 
   let data = Array.from({ length: countries.length }, () => generateRandomData());
 
-  // ✅ Use API data for USA and CHINA if available
+  //  Use API data for USA and CHINA if available
   const updateCountryData = (countryIndex, countryName) => {
     if (economicData && economicData.country.toUpperCase() === countryName) {
       data[countryIndex] = [
@@ -63,7 +67,7 @@ const Data = ({ economicData }) => {
   return (
     <div className="flex flex-col items-center min-h-screen bg-gray-900 px-4">
       
-      {/* ✅ Profile & Sign-Out Button */}
+      {/*  Profile & Sign-Out Button */}
       <div className="w-full max-w-6xl flex justify-between items-center py-4">
         <h2 className="text-2xl text-white font-bold">Economic Data</h2>
         <div className="flex items-center gap-4">
@@ -82,7 +86,7 @@ const Data = ({ economicData }) => {
         </div>
       </div>
 
-      {/* ✅ Table Section */}
+      {/*  Table Section */}
       <div className="w-full max-w-6xl overflow-x-auto bg-gray-800 rounded-lg shadow-lg">
         <div className="border border-gray-700">
           <div className="grid grid-cols-10 min-w-[800px] text-center border border-gray-700">
@@ -111,11 +115,42 @@ const Data = ({ economicData }) => {
 
         </div>
       </div>
+      <br />
+
+
+      <div className="w-full max-w-6xl overflow-x-auto bg-gray-800 rounded-lg shadow-lg">
+        <div className="border border-gray-700">
+          <div className="grid grid-cols-10 min-w-[800px] text-center border border-gray-700">
+            <div className="font-bold bg-gray-900 text-white p-2 border border-gray-700">
+              Country
+            </div>
+            {indicators2.map((item, index) => (
+              <div key={index} className="bg-gray-700 text-white p-2 border border-gray-700 cursor-pointer hover:scale-105 transition-transform duration-200">
+                {item}
+              </div>
+            ))}
+          </div>
+
+          {countries.map((country, rowIndex) => (
+            <div key={rowIndex} className="grid grid-cols-10 min-w-[800px] text-center border border-gray-700">
+              <div className="bg-gray-700 text-white font-bold p-2 border border-gray-700">
+                {country}
+              </div>
+              {data[rowIndex].map((value, colIndex) => (
+                <div key={colIndex} className="bg-red-500 text-white p-2 border border-gray-700 cursor-pointer hover:scale-105 transition-transform duration-200">
+                  {value}
+                </div>
+              ))}
+            </div>
+          ))}
+
+        </div>
+      </div>
     </div>
   );
 };
 
-// ✅ PropType validation
+//  PropType validation
 Data.propTypes = {
   economicData: PropTypes.shape({
     country: PropTypes.string,
