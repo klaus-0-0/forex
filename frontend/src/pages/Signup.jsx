@@ -14,6 +14,11 @@ const Signup = () => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
+  const Info = JSON.parse(localStorage.getItem("user-info"));
+  if(Info){
+    navigate('/data')
+  }
+
   // Google Signup
   const googleSignup = useGoogleLogin({
     onSuccess: async (response) => {

@@ -27,7 +27,7 @@ const Login = () => {
         setMessage("Login successful. Redirecting...");
         setTimeout(() => navigate("/Data"), 2000);
       } else {
-        setMessage(data.error || "Login failed");
+        setMessage( "Login failed");
       }
     } catch (error) {
       setMessage("Error connecting to server");
