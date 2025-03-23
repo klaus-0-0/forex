@@ -18,7 +18,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/data" element={<Data economicData={economicData} />} /> {/* ✅ Pass data as prop */}
         <Route path="/" element={<Signup />} />
-        <Route path="/signup" element={<Signup />} />
+        {/* <Route path="/signup" element={<Signup />} /> */}
         <Route path="/register" element={<Register />} />
       </Routes>
     </Router>
