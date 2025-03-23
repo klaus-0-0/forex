@@ -15,7 +15,7 @@ const Login = () => {
     if(Info){
       navigate('/data')
     }
-    
+
     e.preventDefault();
     try {
       const response = await fetch(`${config.apiUrl}/api/login`, {
@@ -91,7 +91,7 @@ const Login = () => {
           Don't have an account?{" "}
           <span
             className="text-blue-500 hover:underline cursor-pointer"
-            onClick={() => navigate("/signup")}
+            onClick={() => navigate("/")}
           >
             Sign Up
           </span>
